@@ -1,10 +1,10 @@
 ﻿namespace ChallangeApp
 {
-    public class Employee
+    public class User
     {
         private List<int> score = new List<int>();
 
-        public Employee(string name, string surname, string age)
+        public User(string name, string surname, string age)
         {
             this.Name = name;
             this.Surname = surname;
