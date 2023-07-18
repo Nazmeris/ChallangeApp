@@ -6,7 +6,7 @@ namespace ChallangeApp.Tests
         public void WhenUserCollectScores_ShouldReturnCorrectSumAsResult()
         {
             // arrange
-            var user = new User("Adam", "asddas324", "29");
+            var user = new User("Adam");
             user.AddScore(5);
             user.AddScore(6);
             user.AddScore(7);
@@ -24,7 +24,7 @@ namespace ChallangeApp.Tests
         public void WhenUserSubtrackScores_ShouldReturnCorrectSumAsResult()
         {
             // arrange
-            var user = new User("Adam", "asddas324", "29");
+            var user = new User("Adam");
             user.AddScore(5);
             user.AddScore(6);
             user.AddScore(7);

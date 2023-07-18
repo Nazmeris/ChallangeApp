@@ -1,9 +1,9 @@
 ﻿using ChallangeApp;
 using System.Reflection.Metadata;
 
-User user1 = new User("Adam", "Adamowicz", "40");
-User user2 = new User("Ewa", "Adamowicz", "38");
-User user3 = new User("Ada", "Adamowicz", "26");
+User user1 = new User("Adam");
+User user2 = new User("Ewa");
+User user3 = new User("Ada");
 
 user1.AddScore(7);
 user1.AddScore(8);
@@ -41,5 +41,4 @@ foreach (var user in users)
 }
 
 
-Console.WriteLine("Najwyższą liczbę ocen otrzymała -" + " " + userWithMaxResult.Name + " " + userWithMaxResult.Surname + " " + userWithMaxResult.Age +
-                 " " + "lat z wynikiem" + " " + userWithMaxResult.Result + " " + "punktów.");
+Console.WriteLine("Najwyższą liczbę ocen otrzymała -" + " " + userWithMaxResult.Name, userWithMaxResult.Result + " " + "punktów.");
