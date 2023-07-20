@@ -1,44 +1,18 @@
 ﻿using ChallangeApp;
-using System.Reflection.Metadata;
 
-User user1 = new User("Adam");
-User user2 = new User("Ewa");
-User user3 = new User("Ada");
+var employee = new Employee("John", "Shepard");
 
-user1.AddScore(7);
-user1.AddScore(8);
-user1.AddScore(5);
-user1.AddScore(4);
-user1.AddScore(9);
+Employee employee1 = new Employee("John", "Shepard");
 
-user2.AddScore(9);
-user2.AddScore(4);
-user2.AddScore(1);
-user2.AddScore(10);
-user2.AddScore(10);
+employee.AddGrade(7);
+employee.AddGrade(4);
+employee.AddGrade(7);
 
-user3.AddScore(3);
-user3.AddScore(5);
-user3.AddScore(8);
-user3.AddScore(5);
-user3.AddScore(9);
+var statistics = employee.GetStatistics();
 
-List<User> users = new List<User>()
-{
-    user1, user2, user3
-};
+Console.WriteLine($"Averge:   { statistics.Avarge:N2}");
+Console.WriteLine($"Min:   {statistics.Min}");
+Console.WriteLine($"Max:   {statistics.Max}");
+Console.WriteLine($"Sum:   {statistics.Sum}");
 
-int maxResult = -1;
-User? userWithMaxResult = null;
-
-foreach (var user in users)
-{
-    if (user.Result > maxResult)
-    {
-        userWithMaxResult = user;
-        maxResult = user.Result;
-    }
-}
-
-
-Console.WriteLine("Najwyższą liczbę ocen otrzymała -" + " " + userWithMaxResult.Name, userWithMaxResult.Result + " " + "punktów.");
+Console.WriteLine($"{employee1.Name} {employee1.Surname}");
