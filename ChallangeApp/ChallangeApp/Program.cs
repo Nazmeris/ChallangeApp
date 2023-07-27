@@ -11,6 +11,9 @@ employee.AddGrade("12");
 employee.AddGrade(7);
 
 var statistics = employee.GetStatistics();
+var statistics1 = employee.GetStatisticsWithFor();
+var statistics2 = employee.GetStatisticsWithDoWhile();
+var statistics3 = employee.GetStatisticsWithWhile();
 
 Console.WriteLine($"Averge:   { statistics.Avarge:N2}");
 Console.WriteLine($"Min:   {statistics.Min}");

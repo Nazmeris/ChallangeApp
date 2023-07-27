@@ -1,4 +1,7 @@
-﻿namespace ChallangeApp
+﻿using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
+
+namespace ChallangeApp
 {
     public class Employee
     {
@@ -55,8 +58,9 @@
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
             statistics.Sum = 0;
+            //var index = 0;
 
-            foreach(var grade in this.grades)
+            foreach (var grade in this.grades)
             {
                 statistics.Max = Math.Max(statistics.Max, grade);
                 statistics.Min = Math.Min(statistics.Min, grade);
@@ -65,9 +69,65 @@
             }
 
             statistics.Avarge /= this.grades.Count;
+            return statistics;
 
+        }
+        public Statistics GetStatisticsWithFor()
+        {
+            var statistics = new Statistics();
+            statistics.Avarge = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            
+            for (var i = 0; i < this.grades.Count; i++)
+            {
+                statistics.Max = Math.Max(statistics.Max, this.grades[i]);
+                statistics.Min = Math.Min(statistics.Min, this.grades[i]);
+                statistics.Avarge += this.grades[i];
+            }
 
+            statistics.Avarge /= this.grades.Count;
+            return statistics;
+
+        }
+
+        public Statistics GetStatisticsWithWhile()
+        {
+            var statistics = new Statistics();
+            statistics.Avarge = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            var index = 0;
+
+            while (index < this.grades.Count)
+            {
+                statistics.Max = Math.Max(statistics.Max, this.grades[index]);
+                statistics.Min = Math.Min(statistics.Min, this.grades[index]);
+                statistics.Avarge += this.grades[index];
+                index++;
+            }
+            statistics.Avarge /= this.grades.Count;
             return statistics;
         }
+        public Statistics GetStatisticsWithDoWhile()
+        {
+            var statistics = new Statistics();
+            statistics.Avarge = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            var index = 0;
+
+            do
+            {
+                statistics.Max = Math.Max(statistics.Max, grades[index]);
+                statistics.Min = Math.Min(statistics.Min, grades[index]);
+                statistics.Avarge += grades[index];
+                index++;
+            
+            } while (index < this.grades.Count);
+
+            statistics.Avarge /= this.grades.Count;
+            return statistics;
+        }        
     }
 }
