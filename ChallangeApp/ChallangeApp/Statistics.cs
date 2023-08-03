@@ -6,6 +6,7 @@
         public float Max { get; set; }
         public float Avarge { get; set; }
         public float Sum { get; set; }
+        public char AvargeLatter { get; set; }
 
     }
 }
