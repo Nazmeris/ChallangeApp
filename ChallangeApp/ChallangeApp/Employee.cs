@@ -26,67 +26,54 @@ namespace ChallangeApp
             }
             else
             {
-                Console.WriteLine("invalid grade value");
+                throw new Exception("invalid grade value");
             }
         }
+
+        public void AddGrade(char grade)
+        {
+            switch(grade)
+            {
+                case 'A':
+                case 'a':
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.grades.Add(20);
+                    break;
+                default:
+                    throw new Exception("Wrong Latter");            
+             }
+        }
+
         public void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
                 this.AddGrade(result);
             }
+            else if (grade.Length == 1)
+            {
+                char.TryParse(grade, result: out char result1);
+                this.AddGrade(result1);
+            }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("String is not float");
             }
-        }
-        public void AddGrade(char grade)
-        {
-            //if (grade == 'S')
-            //{
-            //    this.grades.Add(100);
-            //}
-            //else if (grade == 'A')
-            //{
-            //    this.grades.Add(80);
-            //}
-            //else if (grade == 'B')
-            //{
-            //    this.grades.Add(60);
-            //}
-            //else if (grade == 'C')
-            //{
-            //    this.grades.Add(40);
-            //}
-            //else if (grade == 'D')
-            //{
-            //    this.grades.Add(20);
-            //}
-            //else
-            //    Console.WriteLine("Wrong Letter");
-
-
-            switch(grade)
-            {
-                case 'A':
-                    this.grades.Add(100);
-                    break;
-                case 'B':
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                    this.grades.Add(20);
-                    break;
-                default:
-                    Console.WriteLine("Wrong Letter");
-                    break;
-             }
         }
         public void AddGrade(int grade)
         {
@@ -110,7 +97,7 @@ namespace ChallangeApp
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
             statistics.Sum = 0;
-            //var index = 0;
+            
 
             foreach (var grade in this.grades)
             {
