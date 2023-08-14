@@ -6,7 +6,7 @@ Console.WriteLine();
 
 var employee = new Employee();
 
-Console.WriteLine("Sytem Ocen:");
+Console.WriteLine("System Ocen:");
 Console.WriteLine("Ocena od 0-100 oraz A=100, B=80, C=60, D=40, E=20");
 
 while (true)
