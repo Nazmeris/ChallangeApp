@@ -1,28 +1,24 @@
-﻿using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
-
-namespace ChallangeApp
+﻿namespace ChallangeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
+        public override event GradeAddedDelegate GradeAdded;
+
         private List<float> grades = new List<float>();
-
-        public Employee()
-        { }
-        public Employee(string name, string surname)
+        public EmployeeInMemory(string name, string surname)
+            : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-
-
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -30,7 +26,19 @@ namespace ChallangeApp
             }
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(double grade)
+        {
+            float result = (float)grade;
+            this.AddGrade((float)result);
+        }
+
+        public override void AddGrade(int grade)
+        {
+            float result = (float)grade;
+            this.AddGrade((float)result);
+        }
+
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -59,7 +67,7 @@ namespace ChallangeApp
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -75,22 +83,14 @@ namespace ChallangeApp
                 throw new Exception("String is not float");
             }
         }
-        public void AddGrade(int grade)
+
+        public override void AddGrade(long grade)
         {
             float result = (float)grade;
             this.AddGrade((float)result);
         }
-        public void AddGrade(long grade)
-        {
-            float result = (float)grade;
-            this.AddGrade((float)result);
-        }
-        public void AddGrade(double grade)
-        {
-            float result = (float)grade;
-            this.AddGrade((float)result);
-        }
-        public Statistics GetStatistics()
+
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Avarge = 0;

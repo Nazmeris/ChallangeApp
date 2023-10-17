@@ -1,38 +1,26 @@
 ﻿using ChallangeApp;
+using System;
 
 Console.WriteLine("Witamy w programie XYZ do oceny Pracowników i Kierowników");
 Console.WriteLine("===========================================");
 Console.WriteLine();
 
-//var employee = new Employee();
-var supervisor = new Supervisor();
+var employee = new EmployeeInMemory("Adam", "Kamizelich");
+employee.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
+employee.AddGrade(0.6f);
+
 
 Console.WriteLine("System Ocen:");
 Console.WriteLine("Ocena od 0-100 oraz A=100, B=80, C=60, D=40, E=20");
 
-//while (true)
-//{
-//    Console.WriteLine("Podaj kolejną ocenę pracownika, żeby zakończyć wciśnij q:");
-//    var input = Console.ReadLine();
-
-//    if (input == "q" || input == "Q")
-//    {
-//        break;
-//    }
-//    try
-//    {
-//        employee.AddGrade(input);
-
-//    }
-//    catch (Exception e)
-//    {
-//        Console.WriteLine($"Exception catched: {e.Message}");
-//    }
-//}
-
 while (true)
 {
-    Console.WriteLine("Podaj kolejną ocenę Kierownika, żeby zakończyć wciśnij q:");
+    Console.WriteLine("Podaj kolejną ocenę pracownika, żeby zakończyć wciśnij q:");
     var input = Console.ReadLine();
 
     if (input == "q" || input == "Q")
@@ -40,8 +28,9 @@ while (true)
         break;
     }
     try
-    {       
-        supervisor.AddGrade(input);
+    {
+        employee.AddGrade(input);
+
     }
     catch (Exception e)
     {
@@ -49,10 +38,29 @@ while (true)
     }
 }
 
-//var statistics = employee.GetStatistics();
-var statistics = supervisor.GetStatistics();
+//while (true)
+//{
+//    Console.WriteLine("Podaj kolejną ocenę Kierownika, żeby zakończyć wciśnij q:");
+//    var input = Console.ReadLine();
+
+//    if (input == "q" || input == "Q")
+//    {
+//        break;
+//    }
+//    try
+//    {       
+//        supervisor.AddGrade(input);
+//    }
+//    catch (Exception e)
+//    {
+//        Console.WriteLine($"Exception catched: {e.Message}");
+//    }
+//}
+
+var statistics = employee.GetStatistics();
+//var statistics = supervisor.GetStatistics();
 Console.WriteLine($"Avarge: {statistics.Avarge}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
-//Console.WriteLine($"AvargeLatter {statistics.AvargeLatter}");
+Console.WriteLine($"AvargeLatter {statistics.AvargeLatter}");
 
