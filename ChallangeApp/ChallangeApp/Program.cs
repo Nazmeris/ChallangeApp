@@ -5,14 +5,13 @@ Console.WriteLine("Witamy w programie XYZ do oceny Pracowników i Kierowników")
 Console.WriteLine("===========================================");
 Console.WriteLine();
 
-var employee = new EmployeeInMemory("Adam", "Kamizelich");
+var employee = new EmployeeInFile("Adam", "Kamizelich");
 employee.GradeAdded += EmployeeGradeAdded;
 
 void EmployeeGradeAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową ocenę");
 }
-employee.AddGrade(0.6f);
 
 
 Console.WriteLine("System Ocen:");
@@ -38,27 +37,9 @@ while (true)
     }
 }
 
-//while (true)
-//{
-//    Console.WriteLine("Podaj kolejną ocenę Kierownika, żeby zakończyć wciśnij q:");
-//    var input = Console.ReadLine();
 
-//    if (input == "q" || input == "Q")
-//    {
-//        break;
-//    }
-//    try
-//    {       
-//        supervisor.AddGrade(input);
-//    }
-//    catch (Exception e)
-//    {
-//        Console.WriteLine($"Exception catched: {e.Message}");
-//    }
-//}
 
 var statistics = employee.GetStatistics();
-//var statistics = supervisor.GetStatistics();
 Console.WriteLine($"Avarge: {statistics.Avarge}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");

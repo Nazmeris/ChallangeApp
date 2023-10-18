@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallangeApp", "ChallangeApp\ChallangeApp.csproj", "{5327313D-A128-46B8-B6EC-BD90782C7EEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallangeApp.Tests", "ChallangeApp.Tests\ChallangeApp.Tests.csproj", "{9782EF46-6CCE-4E0A-BE42-73F1A66DF13A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallangeApp.Tests", "ChallangeApp.Tests\ChallangeApp.Tests.csproj", "{9782EF46-6CCE-4E0A-BE42-73F1A66DF13A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -93,40 +93,10 @@
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Avarge = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            statistics.Sum = 0;
-
 
             foreach (var grade in this.grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Avarge += grade;
-                statistics.Sum += grade;
-            }
-
-            statistics.Avarge /= this.grades.Count;
-
-            switch (statistics.Avarge)
-            {
-                case var avarge when avarge >= 80:
-                    statistics.AvargeLatter = 'A';
-                    break;
-                case var avarge when avarge >= 60:
-                    statistics.AvargeLatter = 'B';
-                    break;
-                case var avarge when avarge >= 40:
-                    statistics.AvargeLatter = 'C';
-                    break;
-                case var avarge when avarge >= 20:
-                    statistics.AvargeLatter = 'D';
-                    break;
-                default:
-                    statistics.AvargeLatter = 'E';
-                    break;
-
+                statistics.AddGrade(grade);
             }
 
             return statistics;
